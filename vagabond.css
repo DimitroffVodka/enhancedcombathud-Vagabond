@@ -1,0 +1,61 @@
+/* ============================================================
+   Argon - Combat HUD (Vagabond) — Custom Styles
+   ============================================================ */
+
+/* ─── Resource bars ───────────────────────────────────────── */
+
+.argon-combat-hud .resource-bar.hp .bar-fill {
+  background: linear-gradient(90deg, #a00 0%, #c91616 100%);
+}
+
+.argon-combat-hud .resource-bar.hp.low .bar-fill {
+  background: linear-gradient(90deg, #6b0000 0%, #ff1111 100%);
+  animation: pulse-low-hp 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-low-hp {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+.argon-combat-hud .resource-bar.mana .bar-fill {
+  background: linear-gradient(90deg, #13257a 0%, #2d52c4 100%);
+}
+
+/* ─── Portrait stat pills ─────────────────────────────────── */
+
+.argon-combat-hud .portrait-stats .luck {
+  color: #c8a52c;
+}
+
+.argon-combat-hud .portrait-stats .armor {
+  color: #8ab4d8;
+}
+
+/* ─── Action buttons ──────────────────────────────────────── */
+
+/* Standard-action buttons get a slightly different tint */
+.argon-combat-hud .action-move    { --argon-btn-color: #3c8f3c; }
+.argon-combat-hud .action-dodge   { --argon-btn-color: #4a77b5; }
+.argon-combat-hud .action-help    { --argon-btn-color: #8a6d2e; }
+.argon-combat-hud .action-search  { --argon-btn-color: #5f3fa0; }
+
+/* ─── Status effects bar ──────────────────────────────────── */
+
+.argon-combat-hud .status-effect-icon {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  transition: filter 0.2s;
+}
+
+.argon-combat-hud .status-effect-icon:hover {
+  filter: brightness(1.3);
+}
+
+/* ─── Vagabond theme colours ──────────────────────────────── */
+
+/* Subtle ochre/brass accent matching Vagabond's pulp aesthetic */
+.argon-combat-hud .argon-hud-main-container {
+  --argon-accent: #c8a52c;
+  --argon-accent-dark: #8a6d1a;
+}

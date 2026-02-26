@@ -1,14 +1,65 @@
-# Argon - Combat HUD (DND5E)
-DnD5e - Fifth Edition System Argon integration
+# Argon - Combat HUD (Vagabond)
 
-## Before opening an issue read [THIS](https://github.com/theripper93/Levels/blob/v9/ISSUES.md)
+A [Vagabond RPG](https://landoftheblind.myshopify.com/products/vagabond-pulp-fantasy-rpg-core-rulebook) system integration for the [Argon - Combat HUD (CORE)](https://foundryvtt.com/packages/enhancedcombathud/) module in Foundry VTT.
 
-![Latest Release Download Count](https://img.shields.io/github/downloads/theripper93/Levels/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge) [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Flevels&colorB=03ff1c&style=for-the-badge)](https://forge-vtt.com/bazaar#package=levels) ![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftheripper93%2FLevels%2Fmain%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange&style=for-the-badge) [![alt-text](https://img.shields.io/badge/-Patreon-%23ff424d?style=for-the-badge)](https://www.patreon.com/theripper93) [![alt-text](https://img.shields.io/badge/-Discord-%235662f6?style=for-the-badge)](https://discord.gg/F53gBjR97G)
+## Requirements
 
-## You can find the documentation on the [WIKI](https://api.theripper93.com/modulewiki/enhancedcombathud/free)
+- Foundry VTT v12+
+- [Argon - Combat HUD (CORE)](https://foundryvtt.com/packages/enhancedcombathud/) `v4.0.0+`
+- [Vagabond](https://foundryvtt.com/packages/vagabond) system `v3.0.0+`
 
-This module is the DND5E Implementation of Argon Combat HUD, The Argon Combat HUD (CORE) is required for this module to work.
-This is the only system integration directly developed by me.
+## Installation
 
-![image](https://github.com/theripper93/enhancedcombathud-dnd5e/assets/1346839/3d49d583-d98e-43e3-8182-681d9ba32c77)
+Paste this URL into the Foundry **Install Module** manifest field:
 
+```
+https://github.com/YOURUSERNAME/enhancedcombathud-vagabond/releases/latest/download/module.json
+```
+
+## Features
+
+| Feature | Description |
+|---|---|
+| **HP Bar** | Live HP bar with low-HP pulse animation |
+| **Mana Bar** | Shows only when the character has mana |
+| **Luck & Armor stats** | Displayed beneath the portrait |
+| **Weapon Sets** | Equipped weapons grouped into sets (up to 2 sets of 2) |
+| **Standard Actions** | Move, Dodge, Help, Search buttons |
+| **Abilities Panel** | All active ability/feature items |
+| **Magic Panel** | All spell/magic items (hidden when actor has no mana/spells) |
+| **Skills Panel** | Roll any skill/attribute directly from the HUD |
+| **Status Effects** | Active conditions shown and toggleable in the bottom bar |
+
+## Customising Action Descriptions
+
+If you want to customise the description of the built-in standard actions (Move, Dodge, Help, Search), create a **Talent** item in your world with a name matching the pattern `_argonUI_<actionId>` where `<actionId>` is one of: `move`, `dodge`, `help`, `search`.
+
+## Adapting to Your Version of Vagabond
+
+The Vagabond system is actively developed. If the HUD does not show HP, Mana, or Skills, it is likely because the field names in `actor.system` differ from what this module expects.
+
+Open your browser console (F12) and run:
+
+```js
+console.log(canvas.tokens.controlled[0]?.actor?.system);
+```
+
+Then compare the output to the field-name lookups in `scripts/vagabond.js`. The relevant sections are marked with comments like:
+
+```js
+// VAGABOND_FIELD — update this path if needed
+```
+
+The `getStat()` helper accepts multiple fallback paths, so you can simply add the correct path to the array.
+
+## Contributing
+
+Pull requests welcome! Please open an issue first to discuss significant changes.
+
+## License
+
+MIT — see `LICENSE`
+
+---
+
+*"Vagabond for Foundry is an independent product published under the Land of the Blind Third-Party License and is not affiliated with Land of the Blind, LLC. Vagabond // Pulp Fantasy RPG © 2025 Land of the Blind, LLC."*
